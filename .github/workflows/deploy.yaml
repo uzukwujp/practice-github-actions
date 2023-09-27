@@ -3,9 +3,10 @@ name: "deploy backend application"
 
 on:
   push:
-    - main
-    - dev
-    - staging
+    branches:
+      - main
+      - dev
+      - staging
 
 jobs:
 
