@@ -1,0 +1,40 @@
+
+name: "deploy backend application"
+
+on:
+  push:
+    - main
+    - dev
+    - staging
+
+jobs:
+
+  build-push:
+    name: build and push docker image
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: build docker image
+        run: echo "run docker build command"
+
+      - name: push docker image
+        run: echo "run docker push command"
+
+
+  deploy:
+    name: deploy to Azure container instance
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: set execute permission on deploy.sh script
+        run: chmod +x deploy.sh
+
+      - name: run the deploy.sh script
+        run: ./deploy.sh
+          
